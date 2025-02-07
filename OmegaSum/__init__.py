@@ -2,6 +2,7 @@ import random
 import math
 import time
 
+from OmegaSum.Factorial import Factorial
 from OmegaSum.Mapmaker import Mapmaker
 from OmegaSum.CaseTester import CaseTester
 
@@ -18,13 +19,6 @@ def formatArr(arr):
     for i in range(len(arr)):
         output += f"{arr[i]}\n"
     return output
-
-
-arr = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
 
 
 def test(algorithm, num_cases):
@@ -44,6 +38,16 @@ def test(algorithm, num_cases):
     timer.showTC()
 
 
+arr = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+factorial = Factorial()
 mapmaker = Mapmaker()
 print("Testing time complexity of Mapmaker.")
-test(mapmaker, 100)
+test(mapmaker, 200)
+
+print("Testing time complexity of Factorial")
+test(factorial, 50)
