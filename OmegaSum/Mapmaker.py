@@ -46,7 +46,7 @@ def computeMap(verticalBars, horizontalBars):
                     map[r + 1][c + 1] += verticalBars[i][r + 1] * horizontalBars[i][c + 1]
         return map
 
-class Algorithm2:
+class Mapmaker:
     def init(self):
         pass
 

@@ -1,9 +1,8 @@
 import random
 import math
-import numpy as np
 import time
 
-from OmegaSum.Algorithm2 import Algorithm2
+from OmegaSum.Mapmaker import Mapmaker
 from OmegaSum.CaseTester import CaseTester
 
 
@@ -27,6 +26,7 @@ arr = [
     [7, 8, 9]
 ]
 
+
 def test(algorithm, num_cases):
     timer = CaseTester()
     initTime = time.time()
@@ -43,6 +43,7 @@ def test(algorithm, num_cases):
     print(f"Total time taken: {time.time() - initTime} seconds")
     timer.showTC()
 
-alg2 = Algorithm2()
 
-test(alg2, 100)
+mapmaker = Mapmaker()
+print("Testing time complexity of Mapmaker.")
+test(mapmaker, 100)
