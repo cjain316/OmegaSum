@@ -1,4 +1,4 @@
-def zeroArray(len):
+def zeroArray(len): #O(n^2)
     a = []
     for i in range(len):
         a.append(0)

@@ -1,4 +1,4 @@
-class Factorial:
+class Factorial: #O(n^3)
     def init(self):
         pass
 
