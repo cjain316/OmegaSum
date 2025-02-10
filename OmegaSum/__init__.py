@@ -36,6 +36,7 @@ def test(algorithm, num_cases, name):
         for b in range(num_cases):
             if ((a+1) * (b+1)) in timer.n:
                 continue
+
             arr = []
             for i in range(a + 1):
                 arr.append(randArray(b + 1))
@@ -61,8 +62,9 @@ mapmaker = Mapmaker()
 chatgpt = ChatGPT()
 
 
-for i in range(40,100):
+for i in range(44,50):
     print(f"Testing chatgpt range {i + 1}")
-    test(mapmaker, i+1, "Mapmaker")
+    test(chatgpt, i+1, "ChatGPT")
 
+print("Done")
 exit()
