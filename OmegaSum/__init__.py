@@ -61,8 +61,8 @@ mapmaker = Mapmaker()
 chatgpt = ChatGPT()
 
 
-for i in range(30,40):
+for i in range(40,100):
     print(f"Testing chatgpt range {i + 1}")
-    test(chatgpt, i+1, "ChatGPT")
+    test(mapmaker, i+1, "Mapmaker")
 
 exit()
