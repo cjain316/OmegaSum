@@ -2,9 +2,10 @@ import matplotlib.pyplot as plt
 import time
 
 class CaseTester:
-    def __init__(self):
+    def __init__(self, function_name):
         self.n = []
         self.time = []
+        self.name = function_name
 
     def start(self, num):
         self.start_time = time.time()*1000
@@ -23,3 +24,34 @@ class CaseTester:
 
         plt.tight_layout()
         plt.show()
+
+    def exportData(self):
+        filename = f"data/{self.name}/{self.name} {len(self.n)} cases.csv"
+        csv = open(filename, "w")
+        csv.write(f"N,Time (ms)\n")
+        for i in range(len(self.n)):
+            csv.write(f"{self.n[i]},{self.time[i]}\n")
+        csv.close()
+
+
+    def sortData(self):
+        quickSort(self.n, self.time, 0, len(self.n) - 1)
+
+# Function to find the partition position
+def partition(array, parallel, low, high):
+    pivot = array[high]
+    i = low - 1
+    for j in range(low, high):
+        if array[j] <= pivot:
+            i = i + 1
+            (array[i], array[j]) = (array[j], array[i])
+            (parallel[i], parallel[i]) = (parallel[j], parallel[j])
+    (array[i + 1], array[high]) = (array[high], array[i + 1])
+    (parallel[i + 1], parallel[high]) = (parallel[high], parallel[i + 1])
+    return i + 1
+
+def quickSort(array, parallel, low, high):
+    if low < high:
+        pi = partition(array, parallel, low, high)
+        quickSort(array, parallel, low, pi - 1)
+        quickSort(array, parallel, pi + 1, high)

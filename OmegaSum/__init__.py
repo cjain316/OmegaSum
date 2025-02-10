@@ -2,6 +2,7 @@ import random
 import math
 import time
 
+from OmegaSum.ChatGPT import ChatGPT
 from OmegaSum.Factorial import Factorial
 from OmegaSum.Mapmaker import Mapmaker
 from OmegaSum.CaseTester import CaseTester
@@ -13,6 +14,12 @@ def randArray(len):
         a.append(random.randint(0, 10))
     return a
 
+def rand_2d_array(rows, columns):
+    a = []
+    for i in range(rows):
+        a.append(randArray(columns))
+    return a
+
 
 def formatArr(arr):
     output = ''
@@ -21,21 +28,26 @@ def formatArr(arr):
     return output
 
 
-def test(algorithm, num_cases):
-    timer = CaseTester()
+def test(algorithm, num_cases, name):
+    timer = CaseTester(name)
     initTime = time.time()
 
     for a in range(num_cases):
-        arr = []
-        for i in range(a + 1):
-            arr.append(randArray(a + 1))
+        for b in range(num_cases):
+            if ((a+1) * (b+1)) in timer.n:
+                continue
+            arr = []
+            for i in range(a + 1):
+                arr.append(randArray(b + 1))
 
-        timer.start((a + 1) * (a + 1))
-        algorithm.compute(arr)
-        timer.stop()
+            timer.start((a + 1) * (b + 1))
+            algorithm.compute(arr)
+            timer.stop()
 
     print(f"Total time taken: {time.time() - initTime} seconds")
-    timer.showTC()
+    timer.sortData()
+    timer.exportData()
+    #timer.showTC()
 
 
 arr = [
@@ -46,8 +58,11 @@ arr = [
 
 factorial = Factorial()
 mapmaker = Mapmaker()
-print("Testing time complexity of Mapmaker.")
-test(mapmaker, 200)
+chatgpt = ChatGPT()
 
-print("Testing time complexity of Factorial")
-test(factorial, 50)
+
+for i in range(30,40):
+    print(f"Testing chatgpt range {i + 1}")
+    test(chatgpt, i+1, "ChatGPT")
+
+exit()
