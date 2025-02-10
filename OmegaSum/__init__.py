@@ -6,6 +6,7 @@ from OmegaSum.ChatGPT import ChatGPT
 from OmegaSum.Factorial import Factorial
 from OmegaSum.Mapmaker import Mapmaker
 from OmegaSum.CaseTester import CaseTester
+from OmegaSum.ChatGPTO import ChatGPTO
 
 
 def randArray(len):
@@ -48,8 +49,19 @@ def test(algorithm, num_cases, name):
     print(f"Total time taken: {time.time() - initTime} seconds")
     timer.sortData()
     timer.exportData()
-    #timer.showTC()
+    timer.showTC()
 
+def compareTo(algorithm_base, algorithm_test):
+    arr = []
+    for i in range(10):
+        arr.append(randArray(10))
+
+    print("Testing comparison")
+    val1 = algorithm_base.compute(arr)
+    print(f"Base value {val1}")
+    val2 = algorithm_test.compute(arr)
+    print(f"Tested value {val2}")
+    return val1 == val2
 
 arr = [
     [1, 2, 3],
@@ -60,11 +72,13 @@ arr = [
 factorial = Factorial()
 mapmaker = Mapmaker()
 chatgpt = ChatGPT()
+chatgpto = ChatGPTO()
 
+for i in range(10):
+    if not compareTo(mapmaker, chatgpto):
+        print("Failed")
+        break
 
-for i in range(44,50):
-    print(f"Testing chatgpt range {i + 1}")
-    test(chatgpt, i+1, "ChatGPT")
+#test(chatgpto, 100, "ChatGPT Optimized Algorithm")
 
-print("Done")
 exit()

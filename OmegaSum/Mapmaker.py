@@ -1,8 +1,5 @@
 def zeroArray(len): #O(n^2)
-    a = []
-    for i in range(len):
-        a.append(0)
-    return a
+    return [0 for i in range(len)]
 
 def getSide(length, l):
     bar = zeroArray(length)
