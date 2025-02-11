@@ -37,6 +37,7 @@ def test(algorithm, num_cases, name):
         for b in range(num_cases):
             if ((a+1) * (b+1)) in timer.n:
                 continue
+            #print(f"Computing for {(a + 1) * (b + 1)} elements")
 
             arr = []
             for i in range(a + 1):
@@ -49,7 +50,7 @@ def test(algorithm, num_cases, name):
     print(f"Total time taken: {time.time() - initTime} seconds")
     timer.sortData()
     timer.exportData()
-    timer.showTC()
+    #timer.showTC()
 
 def compareTo(algorithm_base, algorithm_test):
     arr = []
@@ -74,6 +75,13 @@ mapmaker = Mapmaker()
 chatgpt = ChatGPT()
 chatgpto = ChatGPTO()
 
-test(mapmaker, 100, "Mapmaker")
+
+#compareTo(mapmaker, chatgpto)
+
+
+print(f"Testing chatgpto {150} cases")
+test(chatgpto, 150, "ChatGPT Optimized Algorithm")
+
+
 
 exit()

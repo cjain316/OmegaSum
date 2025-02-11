@@ -13,14 +13,15 @@ def get_side(length, l):
 def compute_map(vertical_bars, horizontal_bars):
         # initialize empty 2d array with correct dimensions
         rows, cols = len(vertical_bars[0]), len(horizontal_bars[0])
-        grid = [[0] * cols for _ in range(rows)]  # Initialize 2D array efficiently
+        grid = [[0] * cols for _ in range(rows)]
 
-        horizontal_sum = [sum(col) for col in zip(*horizontal_bars)]  # Sum horizontal contributions efficiently
-        vertical_sum = [sum(row) for row in vertical_bars]  # Sum vertical contributions efficiently
+        horizontal_sum = [sum(col) for col in zip(*horizontal_bars)]
+        vertical_sum = [sum(row) for row in vertical_bars]
 
+        #Assign first row and first column
         for r in range(rows):
-            grid[r][0] = vertical_sum[r]  # First column assignment
-        grid[0] = horizontal_sum  # First row assignment
+            grid[r][0] = vertical_sum[r]
+        grid[0] = horizontal_sum
 
         # Compute remaining grid values
         for r in range(1, rows):
