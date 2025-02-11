@@ -74,11 +74,6 @@ mapmaker = Mapmaker()
 chatgpt = ChatGPT()
 chatgpto = ChatGPTO()
 
-for i in range(10):
-    if not compareTo(mapmaker, chatgpto):
-        print("Failed")
-        break
-
-#test(chatgpto, 100, "ChatGPT Optimized Algorithm")
+test(mapmaker, 100, "Mapmaker")
 
 exit()
